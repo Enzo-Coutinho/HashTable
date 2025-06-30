@@ -32,8 +32,8 @@ static int ht_hash(const char* s, const int a, const int m)
     for(int i=0; i < len_s; i++)
     {
         hash += (long)pow(a, len_s - (i+1) * s[i]);
-        hash %= m;
     }
+    hash %= m;
     return (int)hash;
 }
 
@@ -172,6 +172,8 @@ void ht_delete(ht_hash_table* ht, const char* key) {
             if (strcmp(item->key, key) == 0) {
                 ht_del_item(item);
                 ht->items[index] = &HT_DELETED_ITEM;
+                ht->count--;
+                return;
             }
         }
         index = ht_get_hash(key, ht->size, i);
