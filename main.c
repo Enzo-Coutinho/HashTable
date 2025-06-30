@@ -10,6 +10,6 @@ int main()
     printf("The value is: %s", ht_search(ht, "Test"));
     ht_del_hash_table(ht);
     
-   getchar();
+    getchar();
     return 0;
 }
